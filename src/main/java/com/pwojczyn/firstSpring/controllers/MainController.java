@@ -14,15 +14,20 @@ import java.util.Random;
 
 @Controller
 public class MainController {
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Model model) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String[] text = {"1Co ty na to", "2Byłeś już tu !", "3Powiedz czy Ci się podoba tutaj", "4Zobacz moją stronkę", "5Kliknij mnie w nos ;)"};
-        Random generator = new Random();
-        int i = generator.nextInt(text.length);
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String index(Model model) {
+//        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+//        String[] text = {"1Co ty na to", "2Byłeś już tu !", "3Powiedz czy Ci się podoba tutaj", "4Zobacz moją stronkę", "5Kliknij mnie w nos ;)"};
+//        Random generator = new Random();
+//        int i = generator.nextInt(text.length);
+//
+//        model.addAttribute("helloMsg", text[i] + "Request: " + request.getQueryString());
+//        return "index";
+//    }
+@RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
 
-        model.addAttribute("helloMsg", text[i] + "Request: " + request.getQueryString());
-        return "index";
+        return "start";
     }
 
     @RequestMapping(value = "/message/{text}", method = RequestMethod.GET)
