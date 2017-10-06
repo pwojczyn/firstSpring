@@ -6,7 +6,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Starter Page - Demo Page by PiotrW</title>
+    <title>Starter Page</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
@@ -33,49 +33,34 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/m" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More Demos</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="/randomtext">Random Text</a>
-                    <a class="dropdown-item" href="/message/ExampleText">Example Text</a>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
         </ul>
 
     </div>
 </nav>
-<br/><br/>
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">Form Demo</h1>
-        <p class="lead">
-            <a  href="/register">Register Form Demo</a>
-            <br/>
-            <a href="/car">Car Form Demo</a>
-            <br/>
-            <a href="/randomtext">Random Text</a>
-            <br/>
-            <a  href="/message/ExampleText">Example Text</a>
-        </p>
-    </div>
-</div>
+<br/><br/><br/>
 <div class="container">
-    <span th:text="${helloMsg}"></span>
-    <div class="starter-template">
-        <h2>Home work</h2>
-        <p class="lead">
-            <a  href="/simplerest">Simple REST Demo</a>
-            <br/>
-            <a  href="/age">Age Form Demo</a>
-            <br/>
-            <a  href="/text">Encode Text to Base64 Form Demo</a>
-            <br/>
-            <a  href="/weather">Weather Info Form</a>
-            <br/>
-        </p>
-    </div>
-    <hr />
-
-
+<center><span th:text="${info}"></span></center>
+    <h1>Simple REST DEMO</h1>
+    <p>
+     /get/login - pobiera komentarze o zadanym komentarzu
+    </p>
+    <p>
+    /put/login/message - zapisuje komentarz z loginem
+    </p>
 </div>
+
+<div class="container">
+
+    <div class="starter-template">
+
+    </div>
+
+</div><!-- /.container -->
 
 
 <!-- Bootstrap core JavaScript
