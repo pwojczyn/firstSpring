@@ -1,0 +1,76 @@
+package com.pwojczyn.firstSpring.models.dao.impl;
+
+
+import com.pwojczyn.firstSpring.models.MysqlConnector;
+import com.pwojczyn.firstSpring.models.WeatherModel;
+import com.pwojczyn.firstSpring.models.dao.WeatherDao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class WeatherDaoImpl implements WeatherDao {
+    private MysqlConnector connector = MysqlConnector.getInstance();
+
+    @Override
+    public void addWeather(WeatherModel model) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connector.getConnection().prepareStatement("INSERT INTO weather  VALUES(?,?,?,?)");
+            preparedStatement.setInt(1,0);
+            preparedStatement.setString(2,model.getCityname());
+            preparedStatement.setFloat(3,model.getTemp());
+            preparedStatement.setDate(4, null);
+
+            preparedStatement.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+    @Override
+    public List<WeatherModel> getAllWeatherData(String cityname) {
+        List<WeatherModel> cityList = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connector.getConnection().prepareStatement(
+                "SELECT * FROM weather WHERE cityname = ?")) {
+            preparedStatement.setString(1,cityname);
+            ResultSet set = preparedStatement.executeQuery();
+            while(set.next()){
+                cityList.add(new WeatherModel(set.getString("cityname"),set.getFloat("temp"),set.getDate("date")));
+
+            }
+            return cityList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> getCities() {
+        List<String> cityName = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connector.getConnection().prepareStatement("SELECT DISTINCT cityname FROM weather")) {
+            ResultSet set = preparedStatement.executeQuery();
+            while (set.next()){
+                cityName.add(set.getString("cityname"));
+            }
+            return cityName;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
