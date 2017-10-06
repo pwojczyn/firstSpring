@@ -53,7 +53,7 @@
     <div class="starter-template">
 
         <div th:each="message : ${loginMessageList}">
-            <span th:text="${login}"></span> : <span th:text="${message.getMessage()}"></span>
+            <span th:text="${login}"></span> : <p th:text="${message.getMessage()}"></p>
 
         </div>
 
